@@ -1,0 +1,16 @@
+if (( Get-ExecutionPolicy) -ne "RemoteSigned")
+{
+  Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+  }
+  #Get-ExecutionPolicy -List
+  Initialize-AWSDefaults
+  if(!(Import-Module AWSPowerShell)){Import-Module AWSPower-Shell}
+  get-module
+  #echo $profile
+  Set-AWSCredential -AccessKey AKIAQZRDJDKR6YKNM2TW -SecretKey 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 -StoreAs vaibhav001
+  Get-AWSCredentials -ListStoredCredentials
+  Initialize-AWSDefaults -ProfileName vaibhav001 -Region us-east-1
+  $instanceId = 'i-07a4b4afbcd50e024'
+
+# Start the EC2 instance
+Start-EC2Instance -InstanceId $instanceId
